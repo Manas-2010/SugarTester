@@ -1,0 +1,32 @@
+#body{
+  background-color:#8c2d1d;
+  font-family: monospace;
+  align: center;
+  font-size: 30px;
+}
+
+#resultBtn, #title{
+  width: 100%;
+  font-size:30px;
+  transition: transform 2s;
+}
+
+#resultBtn:hover{
+  transform: scale(0.9)
+}
+
+#title:hover{
+  transform: rotateZ(360deg);
+}
+#chart{
+  transition: transform 5s
+}
+
+#chart:hover{
+  transform: rotateY(360deg);
+}
+
+#afterFood, #beforeFood{
+  width: 30px;
+  height: 30px;
+}
