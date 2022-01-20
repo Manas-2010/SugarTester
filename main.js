@@ -19,9 +19,38 @@ function tellResults(){
       result.innerHTML = "Normal";
     }
 
+    if(sugar > preDiabetics && beforeFood.checked == true){
+      result.innerHTML = "High sugar Diabetics!"
+    }
+
+    if(sugar < normal && beforeFood.checked == true){
+      result.innerHTML = "Low sugar Diabetics!"
+    }
+
+    if(sugar  == preDiabetics && beforeFood.checked == true){
+      result.innerHTML = "Pre Diabetics!"
+    }
+
+    if(sugar == preDiabeticsAfterFood && afterFood.checked == true){
+      result.innerHTML = "Pre Diabetics!"
+    }
+
     if(sugar == normalAfterFood && afterFood.checked == true){
       result.innerHTML = "Normal"
     }
+
+    if(sugar == normalAfterFood && afterFood.checked == true){
+      result.innerHTML = "Normal"
+    }
+
+    if(sugar > preDiabeticsAfterFood && afterFood.checked == true){
+      result.innerHTML = "High sugar Diabetics!"
+    }
+
+    if(sugar < normalAfterFood && afterFood.checked == true){
+      result.innerHTML = "Low sugar Diabetics!"
+    }
+
 }
 
 function rembeforeFood(){
