@@ -1,34 +1,38 @@
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="style.css"></link>
-    <title>Suger Tester</title>
-    <link rel="shortcut icon" href="sugar.ico"></link>
-  </head>
-  <body id="body">
-    <center>
-      <div class="container">
-<h1 id="title" class="btn btn-primary">Suger Tester</h1>
-<br>
-<img id="chart" src="chart.jpg" />
-<br>
-<br />
 
-<input type="number" id="age" placeholder="Enter your age"></input>
-<br>
-<input type="number" id="sugarLevel" placeholder="Enter your sugerLevel"></input>
-<br />
-<input id="afterFood" onclick="rembeforeFood()" type="checkbox">After Food</input>
-<br>
-<input id="beforeFood" onclick="remafterFood()" type="checkbox">Before Food</input>
-<button id="resultBtn" class="btn btn-success" onclick="tellResults()">Show Results</button>
-<label id="result">Result = <span id="Result"></span></label>
-</div>
-</center>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  </link>
+  <title>Suger Tester</title>
+  <link rel="shortcut icon" href="sugar.ico">
+  </link>
+</head>
+
+<body id="body">
+  <center>
+    <div class="container">
+      <h1 id="title" class="btn btn-primary">Suger Tester</h1>
+      <br>
+      <img id="chart" src="chart.jpg" />
+      <br>
+      <br />
+
+      <input type="number" id="age" placeholder="Enter your age"></input>
+      <br>
+      <input type="number" id="sugarLevel" placeholder="Enter your sugerLevel"></input>
+      <br />
+      <input id="afterFood" onclick="onAfterFood()" type="checkbox">After Food</input>
+      <br>
+      <input id="beforeFood" onclick="onBeforeFood()" type="checkbox">Before Food</input>
+      <button id="resultBtn" class="btn btn-success" onclick="getResult()">Show Results</button>
+      <label id="result">Result = <span id="Result"></span></label>
+    </div>
+  </center>
 </body>
 <script type="text/javascript" src="main.js"></script>
+
 </html>

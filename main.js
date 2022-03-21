@@ -1,68 +1,70 @@
-
-var normal = ["70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"];
-
-var normalAfterFood = ["101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139"];
-
-var preDiabetics = ["101", "102","103", "104","105", "106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125"];
-
-var preDiabeticsAfterFood = ["140", "141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200"];
-
-function tellResults(){
-  var afterFood = document.getElementById("afterFood");
-
-var beforeFood = document.getElementById("beforeFood");
-
-var sugar = document.getElementById("sugarLevel").value;
-
-var result = document.getElementById("Result");
-    if(sugar == normal && beforeFood.checked == true){
-      result.innerHTML = "Normal";
-    }
-
-    if(sugar > preDiabetics && beforeFood.checked == true){
-      result.innerHTML = "High sugar Diabetics!"
-    }
-
-    if(sugar < normal && beforeFood.checked == true){
-      result.innerHTML = "Low sugar Diabetics!"
-    }
-
-    if(sugar  == preDiabetics && beforeFood.checked == true){
-      result.innerHTML = "Pre Diabetics!"
-    }
-
-    if(sugar == preDiabeticsAfterFood && afterFood.checked == true){
-      result.innerHTML = "Pre Diabetics!"
-    }
-
-    if(sugar == normalAfterFood && afterFood.checked == true){
-      result.innerHTML = "Normal"
-    }
-
-    if(sugar == normalAfterFood && afterFood.checked == true){
-      result.innerHTML = "Normal"
-    }
-
-    if(sugar > preDiabeticsAfterFood && afterFood.checked == true){
-      result.innerHTML = "High sugar Diabetics!"
-    }
-
-    if(sugar < normalAfterFood && afterFood.checked == true){
-      result.innerHTML = "Low sugar Diabetics!"
-    }
-
+function onBeforeFood() {
+  try {
+    document.getElementById("afterFood").checked = false;
+  } catch (e) {
+    console.error('onBeforeFood() ' + e);
+  }
 }
 
-function rembeforeFood(){
-    if(beforeFood.checked == true){
-      beforeFood.click();
-      console.log("beforeFood clicked");
-    }
+function onAfterFood() {
+  try {
+    document.getElementById("beforeFood").checked = false;
+  } catch (e) {
+    console.error('onBeforeFood() ' + e);
+  }
 }
 
-function remafterFood(){
-    if(afterFood.checked == true){
-      afterFood.click();
-      console.log("afterFood clicked");
+function getResult() {
+  console.log("getResult() entered");
+
+  var afterFood = false;
+  var beforeFood = false;
+  try {
+    afterFood = document.getElementById("afterFood").checked;
+    beforeFood = document.getElementById("beforeFood").checked;
+
+    console.log("afterFood:" + afterFood);
+    console.log("beforeFood:" + beforeFood);
+
+    var resultMsg = "";
+    var sugarLevel = document.getElementById("sugarLevel").value;
+
+    if (sugarLevel == "") {
+      alert("Please enter sugar level.");
+      console.error("getResult() Please enter sugar level.");
+      return;
     }
+
+    var sugarLevelInt = parseInt(sugarLevel);
+    console.log("sugarLevelInt:" + sugarLevelInt);
+
+    if (beforeFood)
+    {
+      if (sugarLevelInt < 70 )
+        resultMsg = "Low sugar";
+      else if (sugarLevelInt >= 101 && sugarLevelInt <= 125)
+        resultMsg = "Pre-Diabetic";
+      else if (sugarLevelInt > 125)
+        resultMsg = "Diabetic";
+      else 
+        resultMsg = "Normal";
+    } else if (afterFood) {  //afterFood
+      if (sugarLevelInt < 70)
+        resultMsg = "Low sugar";
+      else if (sugarLevelInt < 140 )
+        resultMsg = "Normal";
+      else if (sugarLevelInt > 200)
+        resultMsg = "Diabetic";
+      else if (sugarLevelInt > 140)
+        resultMsg = "Pre-Diabetic";
+    } else {
+      alert("Please select before food or after food.");
+      console.error("getResult() Please select before food or after food.");
+    }
+
+    result.innerHTML = resultMsg;
+  } catch (e) {
+    alert(e);
+    //console.error('getResult() ' + e);
+  }
 }
